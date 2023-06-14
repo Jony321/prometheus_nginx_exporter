@@ -10,7 +10,7 @@ namespaces:
       source:
         files:
           - {{ namespaces[server].files }}
-      labesl:
+      labels:
         {% for line in namespaces[server].labels -%}
           {{ line }}
         {%  endfor %}
