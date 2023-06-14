@@ -1,0 +1,24 @@
+---
+ 
+- name: Ensure config dir
+  become: yes
+  become_user: root
+  file:
+    path: "{{ nginx_exporter_config_dir }}"
+    state: directory
+    mode: 0755
+    owner: root
+    group: root
+
+- name: Ensure config file
+  template:
+    src: "prometheus-nginxlog-exporter.j2"
+    dest: "{{ nginx_exporter_config_dir }}/prometheus-nginxlog-exporter.yml"
+    mode: "600"
+  notify:
+    - Restart Docker container
+
+- name: Include docker-related tasks
+  include_tasks: run_in_docker.yml
+
+
