@@ -1,15 +1,15 @@
 ## AndrewGodGivens /ansible_prometheus_nginx_exporter 
-============
 
-An Ansible role which installs and configures Prometheus nginx_exporter on Linux
 
-============
+An Ansible role which installs and configures [Prometheus nginx_exporter](https://github.com/martin-helmich/prometheus-nginxlog-exporter) on Linux
+
+
 
 ## Requirements
 
 Ansible 2.8+
 
-============
+
 
 ## Role Variables
 
@@ -26,3 +26,7 @@ You can see all vars in defaults/main.yml vars file.
     - prometheus_nginx_exporter
   
 ```
+## License
+
+
+Apache 2.0
