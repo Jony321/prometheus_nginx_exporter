@@ -2,6 +2,18 @@ listen:
   port: {{ nginx_exporter_host_port }}
   metrics_endpoint: {{ nginx_exporter_metrics_path }}
 
+namespaces:
+  {% for server in namespaces -%}
+    - name: {{ server }}
+      format: {{ format }}
+      histogram_buckets: {{ histogram_buckets }}
+      source:
+        files:
+          - {{ namespaces[server].files }}
+      labesl:
+        {% for line in namespaces[server].labels -%}
+          {{ line }}
+        {%  endfor %}
 
-{{ namespaces }} 
+  {%  endfor %}
 

@@ -17,14 +17,15 @@ nginx_exporter_user: nginx_exporter
 histogram_buckets: [.005, .01, .025, .05, .1, .25, .5, 1, 2.5, 5, 10]
 format: "$remote_addr - $remote_user [$time_local] \"$request\" $status $body_bytes_sent \"$http_referer\" \"$http_user_agent\" \"$http_x_forwarded_for\" $request_time"
 
-namespaces: |
-  namespaces:
-    - name: app1
-      format: {{ format }}
-      source:
-        files:
-          - /var/log/nginx/o-ee-i-L-D-oom-mix-01.infra.oom.ag_access_test.log
-      labels:
-        app: "application-1"
-        environment: "production"
-      histogram_buckets: {{ histogram_buckets }}
+namespaces:
+  server_name_1: 
+    files: /var/log/nginx/server_name_1.log
+    labels:
+      - "app: 'application-1'"
+      - "environment: 'production'"
+  server_name_2: 
+    files: /var/log/nginx/server_name_2.log
+    labels:
+      - 'app: "application-2"'
+      - 'environment: "production"'
+
