@@ -5,15 +5,15 @@ listen:
 namespaces:
   {% for server in namespaces -%}
     - name: {{ server }}
-      format: {{ format }}
-      histogram_buckets: {{ histogram_buckets }}
-      source:
-        files:
-          - {{ namespaces[server].files }}
-      labels:
-        {% for line in namespaces[server].labels -%}
-          {{ line }}
-        {%  endfor %}
+    format: {{ format }}
+    histogram_buckets: {{ histogram_buckets }}
+    source:
+      files:
+        - {{ namespaces[server].files }}
+    labels:
+      {% for line in namespaces[server].labels -%}
+        {{ line }}
+      {%  endfor %}
 
   {%  endfor %}
 
