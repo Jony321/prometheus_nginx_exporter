@@ -2,7 +2,7 @@
 galaxy_info:
   description: Ansible role to deploy Prometheus nginx exporter
   company: Personal project
-  role_name: ansible_prometheus_nginx_exporter
+  role_name: prometheus_nginx_exporter
  
 
   license: Apache
