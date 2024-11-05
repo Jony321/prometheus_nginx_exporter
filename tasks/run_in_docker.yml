@@ -1,10 +1,9 @@
 ---
 - name: Start docker node exporter container
-  community.docker.docker_compose:
+  community.docker.docker_compose_v2:
     state: present
     project_name: prometheus_nginx_exporter
     definition:
-      version: '2'
       services:
         nginx_exporter:
           image: "{{ nginx_exporter_docker_image }}"
@@ -20,5 +19,5 @@
             - "{{ nginx_exporter_config_dir }}/prometheus-nginxlog-exporter.yml:/etc/prometheus-nginxlog-exporter.yml"
       networks:
         default:
-          external:
-            name: "{{ nginx_exporter_docker_network_name }}"
+          external: true
+          name: "{{ nginx_exporter_docker_network_name }}"
