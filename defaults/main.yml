@@ -10,7 +10,7 @@ nginx_exporter_docker_labels:
   - nginx_exporter
 nginx_exporter_host_port: 9040
 nginx_exporter_host_address: 127.0.0.1
-nginx_exporter_version: v1
+nginx_exporter_version: v1.4.1
 nginx_exporter_arch: linux-amd64
 nginx_exporter_metrics_path: "/metrics"
 nginx_exporter_user: nginx_exporter
@@ -20,6 +20,6 @@ namespaces:
   server_common: 
     files: /var/log/nginx/access.log
     labels:
-      - "app: 'server_common"
+      - "app: 'server_common'"
       - "environment: 'production'"
 

@@ -3,20 +3,19 @@ listen:
   metrics_endpoint: {{ nginx_exporter_metrics_path }}
 
 namespaces:
-  {% for server in namespaces -%}
-    - name: {{ namespaces[server].name }}
+  {% for server, config in namespaces.items() -%}
+    - name: {{ server }} 
     format: {{ format }}
     histogram_buckets: {{ histogram_buckets }}
     source:
       files:
-        - {{ namespaces[server].files }}
+        - {{ config.files }}
     metrics_override:
       prefix: ""
     namespace_label: "project_name"
     labels:
-      {% for line in namespaces[server].labels -%}
-        {{ line }}
-      {%  endfor %}
+      {% for line in config.labels -%}
+          {{ line }}
+        {% endfor %}
 
   {%  endfor %}
-
