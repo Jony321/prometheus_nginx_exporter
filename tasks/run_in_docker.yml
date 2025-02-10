@@ -1,5 +1,5 @@
 ---
-- name: Start docker node exporter container
+- name: Nginx exporter | Start docker Nginx exporter container
   community.docker.docker_compose_v2:
     state: present
     project_name: prometheus_nginx_exporter

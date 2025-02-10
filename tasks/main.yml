@@ -1,6 +1,5 @@
 ---
- 
-- name: Ensure config dir
+- name: Nginx exporter | Ensure config dir
   become: yes
   become_user: root
   file:
@@ -10,7 +9,7 @@
     owner: root
     group: root
 
-- name: Ensure config file
+- name: Nginx exporter | Ensure config file
   template:
     src: "prometheus-nginxlog-exporter.j2"
     dest: "{{ nginx_exporter_config_dir }}/prometheus-nginxlog-exporter.yml"
@@ -18,7 +17,7 @@
   notify:
     - Restart Docker container
 
-- name: Include docker-related tasks
+- name: Nginx exporter | Include docker-related tasks
   include_tasks: run_in_docker.yml
 
 
