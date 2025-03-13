@@ -9,7 +9,7 @@ namespaces:
     histogram_buckets: {{ histogram_buckets }}
     source:
       files:
-        - {{ config.files }}
+        {{ config.files }}
     metrics_override:
       prefix: ""
     namespace_label: "project_name"
