@@ -2,7 +2,7 @@
 nginx_exporter_config_dir: /var/lib/nginx_exporter
 nginx_exporter_logs_dir: /var/log/nginx
 nginx_exporter_docker_network_name: prom_network
-nginx_exporter_container_name: nginx_exporter        
+nginx_exporter_container_name: nginx-exporter
 nginx_exporter_docker_image: quay.io/martinhelmich/prometheus-nginxlog-exporter
 nginx_exporter_docker_labels:
   - prometheus
@@ -17,8 +17,9 @@ nginx_exporter_user: nginx_exporter
 histogram_buckets: [.005, .01, .025, .05, .1, .25, .5, 1, 2.5, 5, 10]
 format: "$remote_addr - $remote_user [$time_local] \"$request\" $status $body_bytes_sent \"$http_referer\" \"$http_user_agent\" \"$http_x_forwarded_for\""
 namespaces:
-  server_common: 
+  server_common:
     files: /var/log/nginx/access.log
+    name: nginx_server_name
     labels:
       - "app: 'server_common'"
       - "environment: 'production'"

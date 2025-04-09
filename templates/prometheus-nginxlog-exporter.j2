@@ -4,12 +4,12 @@ listen:
 
 namespaces:
   {% for server, config in namespaces.items() -%}
-    - name: {{ server }} 
+    - name: {{ config.name or server }}
     format: {{ format }}
     histogram_buckets: {{ histogram_buckets }}
     source:
       files:
-        {{ config.files }}
+        - {{ config.files }}
     metrics_override:
       prefix: ""
     namespace_label: "project_name"
