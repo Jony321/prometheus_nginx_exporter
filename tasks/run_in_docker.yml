@@ -17,6 +17,7 @@
           volumes:
             - "{{ nginx_exporter_logs_dir }}:/var/log/nginx/"
             - "{{ nginx_exporter_config_dir }}/prometheus-nginxlog-exporter.yml:/etc/prometheus-nginxlog-exporter.yml"
+          user: "{{ nginx_exporter_uid }}:{{ nginx_exporter_gid }}"
       networks:
         default:
           external: true
