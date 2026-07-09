@@ -1,6 +1,6 @@
 ---
 - name: Nginx exporter | Ensure config dir
-  become: yes
+  become: true
   become_user: root
   file:
     path: "{{ nginx_exporter_config_dir }}"
@@ -14,6 +14,8 @@
     src: "prometheus-nginxlog-exporter.j2"
     dest: "{{ nginx_exporter_config_dir }}/prometheus-nginxlog-exporter.yml"
     mode: "600"
+    owner: "{{ nginx_exporter_uid }}"
+    group: "{{ nginx_exporter_gid }}"
   notify:
     - Restart Docker container
 
